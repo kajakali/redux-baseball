@@ -43,4 +43,39 @@ with
 
 ## Stretch Goals
 
+### Keep Going in App.js
 
+One of the joys of redux is that it can really clean up our components. Make `App.js` look like this:
+
+```JSX
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Redux Baseball Pitchers</h1>
+        <OnTheMound />
+        <BehindThePlate />
+        <TotalPitchers />
+        <TotalCatchers />
+        <h3>All Pitchers</h3>
+        <PitcherForm />
+        <PitcherList />
+        <h3>All Catchers</h3>
+        <CatcherForm />
+        <CatcherList />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+```
+
+There are about nine stretch goals wrapped up into this one stretch goal, so break things down into very small steps.
+
+### Clean Index.js
+
+If you have moved everything out of `App.js`, your `index.js` is probably getting a little crowded. Move each of your reducers to a separate file in a new `App/redux/reducers` folder.
