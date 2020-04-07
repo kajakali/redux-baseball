@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TotalPitchers from '../TotalPitchers/TotalPitchers';
+import TotalCatchers from '../TotalCatchers/TotalCatchers';
 
 class App extends Component {
   state = {
@@ -45,6 +46,7 @@ class App extends Component {
       newCatcher: '',
       catcherList: [ ...this.state.catcherList, this.state.newCatcher ],
     });
+    this.props.dispatch( {type: 'ADD_CATCHER', payload: this.state.newCatcher});
   }
 
   handleCatcherSelectClick = selectedCatcher => () => {
@@ -60,8 +62,9 @@ class App extends Component {
         <h2>On the Mound: {this.state.currentPitcher}</h2>
         <h2>Behind the Plate: {this.state.currentCatcher}</h2>
         <TotalPitchers />
-        <div>Total Pitchers: {this.state.pitcherList.length}</div>
-        <div>Total Catchers: {this.state.catcherList.length}</div>
+        <TotalCatchers />
+        <div>Total Pitchers(old): {this.state.pitcherList.length}</div>
+        <div>Total Catchers(old): {this.state.catcherList.length}</div>
         <h3>All Pitchers</h3>
         <form onSubmit={this.handlePitcherSubmit}>
           <input
