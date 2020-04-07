@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TotalPitchers from '../TotalPitchers/TotalPitchers';
 import TotalCatchers from '../TotalCatchers/TotalCatchers';
+import PitcherList from '../PitcherList/PitcherList';
+import CatcherList from '../CatcherList/CatcherList';
 
 class App extends Component {
   state = {
@@ -76,6 +78,8 @@ class App extends Component {
           <button type="submit">Add Pitcher</button>
         </form>
         <ul>
+          <PitcherList />
+          <h3>old pitcher list</h3>
           {this.state.pitcherList.map(pitcher => (
             <li
               onClick={this.handlePitcherSelectClick(pitcher)}
@@ -95,6 +99,8 @@ class App extends Component {
           <button type="submit">Add Catcher</button>
         </form>
         <ul>
+          <CatcherList />
+          <h3>old catcher list</h3>
           {this.state.catcherList.map(catcher => (
             <li
               onClick={this.handleCatcherSelectClick(catcher)}

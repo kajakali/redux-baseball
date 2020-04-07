@@ -23,7 +23,6 @@ const addPitcher = (state=[
             if(action.type === 'ADD_PITCHER'){
                 console.log('added pitcher', action.payload);
                 return [...state, action.payload];
-
             }
             return state;
 }
@@ -35,16 +34,26 @@ const addCatcher = (state=[
         if(action.type === 'ADD_CATCHER'){
             console.log('added catcher', action.payload);
             return [...state, action.payload];
-
         }
         return state;
 
 }
 
+const selectPitcher = (state= 'Maud Nelson', action) => {
+    if(action.type === 'SELECT_PITCHER'){
+        console.log('selecting pitcher', action.payload);
+        return [action.payload];
+        
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers(
    {     addPitcher,
-        addCatcher,}
+        addCatcher,
+        selectPitcher,
+    }
     ),
     applyMiddleware(logger)
 );
