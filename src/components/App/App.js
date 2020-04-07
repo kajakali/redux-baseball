@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import TotalPitchers from '../TotalPitchers/TotalPitchers';
 
 class App extends Component {
   state = {
@@ -22,6 +24,7 @@ class App extends Component {
       newPitcher: '',
       pitcherList: [ ...this.state.pitcherList, this.state.newPitcher ],
     });
+    this.props.dispatch( { type: 'ADD_PITCHER', payload: this.state.newPitcher});
   }
 
   handlePitcherSelectClick = selectedPitcher => () => {
@@ -56,6 +59,7 @@ class App extends Component {
         <h1>Redux Baseball Pitchers</h1>
         <h2>On the Mound: {this.state.currentPitcher}</h2>
         <h2>Behind the Plate: {this.state.currentCatcher}</h2>
+        <TotalPitchers />
         <div>Total Pitchers: {this.state.pitcherList.length}</div>
         <div>Total Catchers: {this.state.catcherList.length}</div>
         <h3>All Pitchers</h3>
@@ -101,4 +105,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
